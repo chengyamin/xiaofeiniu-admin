@@ -12,38 +12,30 @@ Vue.config.productionTip = false
 
 
 /**创建全局过滤器 */
-Vue.filter('data',(val)=>{
-  //把bigint转换为yyyy-mm-dd hh:mm:ss
-  var date=new Date(val);
-  var yy=date.getFullYear();
-  var mm=date.getMonth()+1;
-  mm= mm>9 ? mm : '0'+mm
+Vue.filter('date', (val)=>{     
+  //把bigint转换为yyyy-mm-dd
+  var date = new Date(val)
+  var yy = date.getFullYear()
+  var mm = date.getMonth()+1
+  mm = mm>9 ? mm : '0'+mm
   var dd = date.getDate()
   dd = dd>9 ? dd : '0'+dd
-
-  var hh = date.getHours()
-  hh= hh>9 ? hh : '0'+hh
-  var mi=date.getMinutes()
-  mi= mi>9 ? mi: '0'+mi
-  var ss = date.getSenconds()
-  ss = ss>9 ? ss : '0'+ss
-
-  return yy+'-'+mm+'-'+dd+' '+hh+':'+mi+':'+ss
+  return yy+'-'+mm+'-'+dd
 })
-Vue.filter('dataTime',(val)=>{
+Vue.filter('datetime', (val)=>{
   //把bigint转换为yyyy-mm-dd hh:mm:ss
-  var date=new Date(val);
-  var yy=date.getFullYear();
-  var mm=date.getMonth()+1;
-  mm= mm>9 ? mm : '0'+mm
+  var date = new Date(val)
+  var yy = date.getFullYear()
+  var mm = date.getMonth()+1
+  mm = mm>9 ? mm : '0'+mm
   var dd = date.getDate()
   dd = dd>9 ? dd : '0'+dd
-
+  
   var hh = date.getHours()
-  hh= hh>9 ? hh : '0'+hh
-  var mi=date.getMinutes()
-  mi= mi>9 ? mi: '0'+mi
-  var ss = date.getSenconds()
+  hh = hh>9 ? hh : '0'+hh
+  var mi = date.getMinutes()
+  mi = mi>9 ? mi : '0'+mi
+  var ss = date.getSeconds()
   ss = ss>9 ? ss : '0'+ss
 
   return yy+'-'+mm+'-'+dd+' '+hh+':'+mi+':'+ss
@@ -64,7 +56,5 @@ Vue.filter('tableStatus',(val)=>{
 new Vue({
   router,
   store, //指定当前项目唯一的vuex存储仓库对象，其中保存着所有组件共享的数据
-  render: (createElement)=>{
-    return createElement(App);//(h)=>h(App)  根据App组件创建<App></App>元素，挂在到#app内部
-  }
+  render: (h)=>h(App) //根据App组件创建<App></App>元素，挂在到#app内部//(createElement)=>{return createElement(App);
 }).$mount('#app')

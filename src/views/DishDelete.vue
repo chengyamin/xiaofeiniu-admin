@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
-    <h1>404 NotFound</h1>
+  <div class="">
+    <h1>DishDelete</h1>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <h6>全局配置：{{$store.state.globalSettings}}</h6>
+      
     <router-view/>
   </div>
 </template>
